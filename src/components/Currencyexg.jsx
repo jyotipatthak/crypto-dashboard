@@ -1,111 +1,107 @@
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCrypto1, setCrypto2,  setComparisonResult } from '../redux/Actions/exchangeActions';
 
-import Piegraph from './PieChart';
-import  React,{ useState } from 'react';
-import { useSelector } from 'react-redux';
+const CryptoExchange = () => {
+  const dispatch = useDispatch();
 
-const Currencyexg =()=>{
-    const exchangeRates = useSelector(state => state.exchangeRates);
+  // Initialize local state for showExchangeRates
+  const [showExchangeRates, setShowExchangeRates] = useState(false);
+  const [amountInput, setAmountInput] = useState('1'); // Local state for the amount input
 
-  const [crypto1, setCrypto1] = useState('bitcoin');
-  const [crypto2, setCrypto2] = useState('bitcoin');
-  const [amount, setAmount] = useState('');
-  const [comparisonResult, setComparisonResult] = useState('');
+  // Get data from the Redux store
+  const crypto1 = useSelector((state) => state.exchange.crypto1);
+  const crypto2 = useSelector((state) => state.exchange.crypto2);
+  const comparisonResult = useSelector((state) => state.exchange.comparisonResult);
+  const exchangeRates = useSelector((state) => state.exchange.exchangeRates);
 
-  const handleCrypto1Change = event => {
-    setCrypto1(event.target.value);
+  // Function to handle amount input change
+  const handleAmountChange = (event) => {
+    setAmountInput(event.target.value);
   };
 
-  const handleCrypto2Change = event => {
-    setCrypto2(event.target.value);
-  };
-
-  const handleAmountChange = event => {
-    setAmount(event.target.value);
-  };
-
+  // Function to compare crypto exchange rates
   const handleCompare = () => {
-    
-    const rate1Sell = exchangeRates[crypto1].sell;
-    const rate2Buy = exchangeRates[crypto2].buy;
-   
+    const rate1Sell = exchangeRates[crypto1]?.sell || 0;
+    const rate2Buy = exchangeRates[crypto2]?.buy || 1;
 
-    if (!isNaN(amount)) {
-      const result1 = amount * (rate1Sell / rate2Buy);
-      
-      setComparisonResult(`
-      
-      ${result1.toFixed(2)}
-      
-      
-      `);
+    if (!isNaN(amountInput)) {
+      const result1 = (amountInput * rate1Sell) / rate2Buy;
+
+      dispatch(setComparisonResult(result1.toFixed(2)));
     } else {
-      setComparisonResult('Invalid input');
+      dispatch(setComparisonResult('Invalid input'));
     }
   };
 
-    return(
-        <div className='grid sm:grid-cols-2  mt-2 gap-2 overflow-hidden '>
-            <div className=' bg-white shadow-md   '>
-                <div className=' flex md:flex-row flex-col sm:text-center '>
-                    <div className='font-bold p-2 w-1/2 '>Portfolio</div>
-                    <div className=' font-bold p-2 w-1/2'>Total Value:$1000</div>
-                </div>
-                <div className='h-60 px-20 sm:ml-0'>
+  // Function to toggle showing exchange rates
+  const handleShowExchangeRates = () => {
+    setShowExchangeRates(!showExchangeRates);
+  };
 
-                    <Piegraph />
+  return (
+    <div className='container bg-white shadow-md overflow-hidden relative h-full w-full md:items-center'>
+      <div className='font-bold text-cyan-500 p-2 text-left pb-6'>Crypto Exchange</div>
 
-                </div>
-
-            </div>
-            <div className='  grid-rows-5 bg-white shadow-lg  overflow-hidden '>
-                
-               
-                    <div className='font-bold p-2 text-left'>Crypto Exchange</div>
-                    <div className='h-60 mt-7 ml-6'>  
-                <label htmlFor="crypto1" className=' relative font-bold text-pink-500 ml-5 top-3 '>Sell</label>
-      <select id="crypto1" value={crypto1} className='relative top-10  shadow-md rounded-md border-solid bg-white border-radius  h-9 w-36' onChange={handleCrypto1Change}>
-        {Object.keys(exchangeRates).map(crypto => (
-          <option key={crypto} value={crypto}>
-            {crypto}
-          </option>
-        ))}
-      </select>
-      
-<br />
-      <label htmlFor="crypto2" className='relative top-10 font-bold text-cyan-500 ml-5'>Buy</label>
-      <select id="crypto2" value={crypto2} className='relative top-10 left-11 shadow-sm rounded-md border-solid   mr-72 bg-white border-radius h-9  w-36 ' onChange={handleCrypto2Change}>
-        {Object.keys(exchangeRates).map(crypto => (
-          <option key={crypto} value={crypto}>
-            {crypto}
-          </option>
-        ))}
+      {/* Select Crypto to Buy */}
+      <div htmlFor="crypto1" className='relative left-2 top-6 font-bold text-pink-500'>Buy</div>
+      <select
+        id="crypto1"
+        value={crypto1}
+        className='relative top-6 left-5 shadow-md rounded-md border-solid bg-white border-radius h-9 w-36 mr-60'
+        onChange={(e) => dispatch(setCrypto1(e.target.value))}
+      >
+        <option value="bitcoin">Bitcoin</option>
+        <option value="ethereum">Ethereum</option>
+        <option value="pi">Pi</option>
+        <option value="tether">Tether</option>
       </select>
 
-      <label htmlFor="amount" className='relative bottom-20 bold  left-60 font-bold'>Enter value :</label> <br />
+      {/* Select Crypto to Sell */}
+      <div htmlFor="crypto2" className='relative top-8 font-bold text-cyan-500 left-2'>Sell</div>
+      <select
+        id="crypto2"
+        value={crypto2}
+        className='relative top-9 left-5 shadow-md rounded-md border-solid bg-white border-radius h-9 w-36 mr-60'
+        onChange={(e) => dispatch(setCrypto2(e.target.value))}
+      >
+        <option value="bitcoin">Bitcoin</option>
+        <option value="ethereum">Ethereum</option>
+        <option value="pi">Pi</option>
+        <option value="tether">Tether</option>
+      </select>
+
+      {/* Input for Amount */}
+      <label htmlFor="amount" className='relative left-56 bottom-20 italic hover:not-italic'>Enter value:</label> <br />
       <input
         type="number"
         id="amount"
-        placeholder="Enter amount"
-        className='relative bottom-20 left-60 shadow-md rounded-sm border-solid bg-white border-radius p-2 h-8 w-1/3  '
-        value={amount}
+        placeholder=" amount"
+        className='relative bottom-20 left-52 shadow-md rounded-sm border-solid bg-white border-radius p-2 h-8 w-28'
+        value={amountInput}
         onChange={handleAmountChange}
       />
 
-      <button id="compare" className=' relative top-8 right-9 left-3 shadow-md rounded-md border-solid bg-blue-400 border-radius h-9 w-28 ' onClick={handleCompare}>
-       Exchange 
+      {/* Button to Compare */}
+      <button id="compare" className='relative top-4 mt-4 right-10 left-9 shadow-md rounded-md border-solid bg-blue-400 border-radius h-8 w-28' onClick={handleCompare}>
+        Exchange
       </button>
 
-        
-        
-      <div id="comparison-result"  className='relative left-60 shadow-md rounded-md border-solid bg-white border-radius bottom-14  h-9 w-1/3 p-2 pb-2 ' >{comparisonResult}</div>
-    </div>
-                    
-                
-        </div>
-        
-	</div>				
-				
+      {/* Display Comparison Result */}
+      <div id="comparison-result" className='relative left-52 shadow-md rounded-md border-solid bg-white border-radius bottom-16  h-8 w-28 p-2'>{comparisonResult}</div>
 
-            )
-            }
-export default Currencyexg;
+      {/* Show Exchange Rates */}
+      {showExchangeRates && (
+        <div id="exchange-rates" className="relative left-56 bottom-14 font-bold">
+          {Object.entries(exchangeRates).map(([currency, rate]) => (
+            <p key={currency}>
+              {currency}: {rate.buy} (Buy) - {rate.sell} (Sell)
+            </p>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default CryptoExchange;

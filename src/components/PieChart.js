@@ -1,59 +1,77 @@
- import React from 'react';
- import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js';
-  import {Pie} from 'react-chartjs-2';
+import React from 'react'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-            ChartJS.register(ArcElement, Tooltip, Legend);
+// Register Chart.js elements and plugins
+ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
-
-            export const data = {
-                labels: ['Eth', 'Btc', 'Pi'],
+const Piegraph = () => {
+  return (
+    // Container for the pie chart with styles
+    <div className='container shadow-md border w-full rounded-md bg-white relative'> 
+      {/* Title */}
+      <div className='flex md:flex-row flex-col'>
+        <h1 className='font-bold text-cyan-500 p-2 w-1/2 relative'>Portfolio</h1>
+      </div>
+        
+      {/* Pie Chart */}
+      <div className="h-48"> 
+        <Pie 
+          data={{
+            labels: ['Tether', 'Luna', 'Ethereum'],
             datasets: [
-            {
-
-                data: [200,  200,200],
-            backgroundColor: [
-              "rgb(75, 192, 192)",
-              
-              'rgb(54, 162, 235)',
-              'rgb(255, 99, 132)',
-              
-              ],
-            borderColor: [
-              "rgb(75, 192, 192)",
-              
-              'rgb(54, 162, 235)',
-              'rgb(255, 99, 132)',
+              {
+                label: 'Portfolio',
+                data: [250, 400, 350],
+                backgroundColor: [
+                  "rgb(95, 192, 192)",
+                  'rgb(54, 162, 235)',
+                  'rgb(255, 99, 132)',      
+                ],
+                borderColor: [
+                  "rgb(95, 192, 192)",
+                  'rgb(54, 162, 235)',
+                  'rgb(255, 99, 132)',
+                ],
+                borderWidth: 1,
+              },
             ],
-            borderWidth: 0,
-    },
-            ],
-};
-            const option =
-            {
-                plugins:
-            {
-                legend:
-            {
-                position:'right',
-            fullSize:true,
-            
-            labels:
-            {
-              padding:15,  
-            usePointStyle:true,
-            pointStyle:'circle',
-            
-      }
-    }
-  }
+          }} 
+          plugins={[ChartDataLabels]}  
+          options={{
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: true,
+                position:"bottom",
+                labels: {
+                  usePointStyle: true,
+                  pointStyle: "circle"
+                }
+              },
+              datalabels: {
+                display: true,
+                color: "white",
+                align: "center",
+                padding: {
+                  right: 2
+                },
+                labels: {
+                  title: {
+                    font: {
+                      weight: "bold",
+                      size: 18
+                    }
+                  },
+                },
+              },
+            }
+          }}
+        />
+      </div>
+    </div>
+  )
 }
-
-             function Piegraph() {
-  return <Pie className='graph' data={data} options={option} />;
-}
-		
-
-
-           
 
 export default Piegraph;

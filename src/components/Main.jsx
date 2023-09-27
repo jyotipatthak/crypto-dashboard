@@ -1,47 +1,56 @@
 import React, { useState } from "react";
-
 import Searchbar from './searchbar';
 import CryptoChart from './CryptoChart';
-import Rightsidebar from './rightsidebar';
-import Currencyexg from './Currencyexg';
+import CryptoSidebar from './CryptoSidebar';
+import CryptoExchange from './Currencyexg';
+import PieChart from "./PieChart";
+import CurrencyDropdown from "./currencySelector";
+
 function Main() {
-  const [selectedCurrency, setSelectedCurrency] = useState("usd");
-  
+  const [selectedCurrency, setSelectedCurrency] = useState("inr");
+
+  const handleCurrencyChange = (currency) => {
+    setSelectedCurrency(currency);
+  };
+
   return (
     <>
-        <div class="bg-slate-100  flex  flex-col  mb-4 m-4  md:m-6  h-full  rounded md:flex-row  overflow-hidden"  >
-			    <div class=' grid grid-rows rounded-lg md:h-full  justify-center  lg:col-span-3  md:gap-2'>
-                    
-					<div class="flex flex-row">
-                <select
-                  value={selectedCurrency}
-                  onChange={(e) => setSelectedCurrency(e.target.value)}
-                  className="h-10 w-20 relative left-4 top-4 rounded outline-none border focus:border-cyan-500 shadow-sm bg-white"
-                >
-                  <option value="usd">USD</option>
-                  <option value="inr">INR</option>
-                  <option value="eur">EUR</option>
-                  <option value="usd">YEN</option>
-                  <option value="GBP">GBP</option>
-                </select>
+      {/* Header */}
+      <header className="bg-red-500 text-black text-center font-bold">
+        {/* Add your header content here */}
+        <h1>CRYPTO DASHBOARD</h1>
+      </header>
 
-                <Searchbar />
-            </div> 
-              <div class=" bg-white shadow-md  mt-2 mx-4  ">
-              <CryptoChart />
-            
-					</div>
-					<div class="mx-4 mb-4 overflow-hidden shadow-md">
-					  <Currencyexg />
-					</div>
-				</div>
-        <div class=" bg-white shadow-md  mt-4 mb-4 mx-4 md:ml-0" >
-                  <Rightsidebar selectedCurrency={selectedCurrency} /> 
-				</div>
-            
-    </div>
-        
-      
+      {/* Main content */}
+      <div className="bg-slate-100 flex flex-col mb-4 m-4 md:m-6 h-full rounded md:flex-row overflow-hidden">
+        <div className='grid grid-rows md:h-full lg:col-span-3 md:gap-2 container mx-auto '>
+          <div className="flex flex-row">
+            <CurrencyDropdown
+              selectedCurrency={selectedCurrency}
+              handleCurrencyChange={handleCurrencyChange}
+            />
+            <Searchbar />
+          </div>
+          <div className="bg-white shadow-md mt-2 mx-4">
+            <CryptoChart />
+          </div>
+          <div className="mx-4 relative shadow-md mb-4 md:flex overflow-hidden">
+            <div className="grid sm:grid-cols-2 gap-2 mt-2 w-full">
+              <PieChart />
+              <CryptoExchange />
+            </div>
+          </div>
+        </div>
+        <div className="bg-white shadow-md mt-4 mb-4 mx-4 md:ml-0">
+          <CryptoSidebar selectedCurrency={selectedCurrency} />
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-red-500 text-black  text-center font-bold">
+        {/* Add your footer content here */}
+        <p>&copy; 2023 Crypto Dashboard</p>
+      </footer>
     </>
   );
 }
