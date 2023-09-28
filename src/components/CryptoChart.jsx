@@ -70,7 +70,7 @@ const CryptoChart = () => {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="price" stroke="rgb(75, 192, 192)" fill="rgb(255, 99, 132)" />
+            <Bar dataKey="price" stroke="rgb(75, 192, 192)" fill="rgb(75, 192, 192)" />
           </BarChart>
         );
 

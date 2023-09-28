@@ -46,7 +46,7 @@ import {
         return { ...state, loading: false, error: action.payload };
   
       default:
-        return state; // If no action matches, return the current state unchanged
+        return state; 
     }
   };
   

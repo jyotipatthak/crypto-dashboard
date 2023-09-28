@@ -19,13 +19,13 @@ const CurrencyDropdown = () => {
       <select
         value={selectedCurrency}
         onChange={handleChange}
-        className="h-10 w-20 relative left-4 top-4 rounded outline-none border focus:border-cyan-500 shadow-sm bg-white">
+        className="h-10 w-20 relative left-4 top-5 rounded outline-none border bg-gradient-to-b from-cyan-500 via-cyan-300 focus:border-cyan-500 shadow-sm bg-white">
         {/* Dropdown options for different currencies */}
         <option value="usd">USD</option>
         <option value="inr">INR</option>
         <option value="eur">EUR</option>
         <option value="yen">YEN</option> 
-        <option value="GBP">GBP</option>
+        <option value="gbp">GBP</option>
       </select>
     </div>
   );

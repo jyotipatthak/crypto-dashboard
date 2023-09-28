@@ -9,7 +9,7 @@ ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 const Piegraph = () => {
   return (
     // Container for the pie chart with styles
-    <div className='container shadow-md border w-full rounded-md bg-white relative'> 
+    <div className='container shadow-md border w-full  bg-white   relative'> 
       {/* Title */}
       <div className='flex md:flex-row flex-col'>
         <h1 className='font-bold text-cyan-500 p-2 w-1/2 relative'>Portfolio</h1>
@@ -23,9 +23,9 @@ const Piegraph = () => {
             datasets: [
               {
                 label: 'Portfolio',
-                data: [250, 400, 350],
+                data: [400, 250, 350],
                 backgroundColor: [
-                  "rgb(95, 192, 192)",
+                  "#00A3B0",
                   'rgb(54, 162, 235)',
                   'rgb(255, 99, 132)',      
                 ],

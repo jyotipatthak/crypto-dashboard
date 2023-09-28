@@ -83,7 +83,7 @@ const CryptoExchange = () => {
       />
 
       {/* Button to Compare */}
-      <button id="compare" className='relative top-4 mt-4 right-10 left-9 shadow-md rounded-md border-solid bg-blue-400 border-radius h-8 w-28' onClick={handleCompare}>
+      <button id="compare" className='relative top-4 mt-4 right-10 left-9 shadow-md rounded-md border-solid bg-cyan-500 border-radius h-8 w-28' onClick={handleCompare}>
         Exchange
       </button>
 
