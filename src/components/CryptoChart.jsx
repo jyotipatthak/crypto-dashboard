@@ -18,7 +18,7 @@ import {
 
 const CryptoChart = () => {
   const dispatch = useDispatch();
-  const [currency, setCurrency] = useState('matic-network');
+  const [currency, setCurrency] = useState('bitcoin');
   const [timeInterval, setTimeInterval] = useState('365d');
   const [chartType, setChartType] = useState('line');
   const timeIntervals = [
@@ -28,19 +28,18 @@ const CryptoChart = () => {
     { value: '180d', label: '6M' },
     { value: '365d', label: '1Y' },
   ];
-
-  // Use useEffect to fetch data when currency or time interval changes
+   // Function to fetch data
   useEffect(() => {
+    const fetchData = (selectedCurrency, selectedTimeInterval) => {
+      dispatch(fetchChartData(selectedCurrency, selectedTimeInterval));
+      console.log(selectedCurrency, selectedTimeInterval);
+    };
+  
     fetchData(currency, timeInterval);
-  }, [currency, timeInterval]);
+  }, [currency, timeInterval, dispatch]);
+  
 
-  // Function to fetch data
-  const fetchData = (selectedCurrency, selectedTimeInterval) => {
-    dispatch(fetchChartData(selectedCurrency, selectedTimeInterval));
-    console.log(selectedCurrency, selectedTimeInterval);
-  };
-
-  // Get data from Redux store
+   // Get data from Redux store
   const chartData = useSelector((state) => state.chartData.chartData);
 
   // Function to render the selected chart type
@@ -57,8 +56,8 @@ const CryptoChart = () => {
             <XAxis dataKey="date" />
             <YAxis />
             <Tooltip />
-            <Legend bordercolor="" />
-            <Line dataKey="price" stroke="rgb(95, 192, 192)" fill="red" activeDot={{ r: 6 }} />
+            <Legend />
+            <Line dataKey="price" stroke="rgb(75, 192, 192)" fill="black" activeDot={{ r: 6 }} />
           </LineChart>
         );
 
@@ -94,7 +93,7 @@ const CryptoChart = () => {
   return (
     <>
       <div className="flex pl-30 bg-white shadow gap-4">
-        <div className="w-1/2 pt-4 lg:col-span-3 text-right ">
+        <div className="w-1/2 pt-4  text-right ">
           {/* Render time interval buttons */}
           {timeIntervals.map((interval) => (
             <button

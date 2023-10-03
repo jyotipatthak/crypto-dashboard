@@ -14,7 +14,7 @@ const CurrencyDropdown = () => {
   };
 
   return (
-    <div class="flex flex-row">
+    <div className="flex flex-row">
       {/* Dropdown for selecting the currency */}
       <select
         value={selectedCurrency}
@@ -24,9 +24,7 @@ const CurrencyDropdown = () => {
         <option value="usd">USD</option>
         <option value="inr">INR</option>
         <option value="eur">EUR</option>
-        <option value="yen">YEN</option> 
-        <option value="gbp">GBP</option>
-      </select>
+        </select>
     </div>
   );
 };

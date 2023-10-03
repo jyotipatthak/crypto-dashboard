@@ -6,7 +6,7 @@ import NavBar from './components/NavBar';  // Import the NavBar component
 // Functional component representing the main application
 function App() {
   return (
-    <div class="bg-white sm:w-full relative">  {/* Main application container with a white background */}
+    <div className="bg-white sm:w-full relative">  {/* Main application container with a white background */}
       <NavBar />  {/* Render the NavBar component */}
       <div>
         <Main />  {/* Render the Main component */}

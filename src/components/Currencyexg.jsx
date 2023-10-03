@@ -40,10 +40,11 @@ const CryptoExchange = () => {
   };
 
   return (
-    <div className='container bg-white shadow-md overflow-hidden relative h-full w-full md:items-center'>
+    <div className='container bg-white shadow-md overflow-hidden relative h-full w-full '>
       <div className='font-bold text-cyan-500 p-2 text-left pb-6'>Crypto Exchange</div>
 
       {/* Select Crypto to Buy */}
+      <div className=' relative container'>
       <div htmlFor="crypto1" className='relative left-2 top-6 font-bold text-pink-500'>Buy</div>
       <select
         id="crypto1"
@@ -62,7 +63,7 @@ const CryptoExchange = () => {
       <select
         id="crypto2"
         value={crypto2}
-        className='relative top-9 left-5 shadow-md rounded-md border-solid bg-white border-radius h-9 w-36 mr-60'
+        className='relative top-8 left-5 shadow-md rounded-md border-solid bg-white border-radius h-9 w-36 mr-60'
         onChange={(e) => dispatch(setCrypto2(e.target.value))}
       >
         <option value="bitcoin">Bitcoin</option>
@@ -72,12 +73,12 @@ const CryptoExchange = () => {
       </select>
 
       {/* Input for Amount */}
-      <label htmlFor="amount" className='relative left-56 bottom-20 italic hover:not-italic'>Enter value:</label> <br />
+      <label htmlFor="amount" className='relative left-52 bottom-24 italic hover:not-italic'>Enter value:</label> <br />
       <input
         type="number"
         id="amount"
         placeholder=" amount"
-        className='relative bottom-20 left-52 shadow-md rounded-sm border-solid bg-white border-radius p-2 h-8 w-28'
+        className='relative bottom-28  left-52 shadow-md rounded-sm border-solid bg-white border-radius p-2 h-8 w-28'
         value={amountInput}
         onChange={handleAmountChange}
       />
@@ -100,8 +101,10 @@ const CryptoExchange = () => {
           ))}
         </div>
       )}
+      </div>
     </div>
   );
 };
 
 export default CryptoExchange;
+

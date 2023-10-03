@@ -24,7 +24,7 @@ function Main() {
 
       {/* Main content */}
       <div className="bg-slate-100 flex flex-col mb-4 m-4 md:m-6 h-full rounded md:flex-row overflow-hidden">
-        <div className='grid grid-rows md:h-full lg:col-span-3 md:gap-2 container mx-auto '>
+        <div className='grid grid-rows md:h-full lg:col-span-3  '>
           <div className="flex flex-row">
             {/* CurrencyDropdown component */}
             <CurrencyDropdown
@@ -54,9 +54,9 @@ function Main() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-red-400 via-cyan-500 to-red-400 py-1 text-black  text-center font-bold">
+      <footer className="bg-gradient-to-r from-red-400 via-cyan-500 to-red-400 py-1 text-black  text-center font-bold ">
         {/* Add your footer content here */}
-        <p>&copy; 2023 Crypto Dashboard</p>
+        <p className="">&copy; 2023 Crypto Dashboard</p>
       </footer>
     </>
   );

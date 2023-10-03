@@ -35,15 +35,15 @@ const CryptoSidebar = () => {
   }
 
   return (
-    <div className="">
+    <div className=''>
       <div className="grid grid-rows ">
-        <div className="p-4 font-bold text-xl bg-gradient-to-b from-cyan-500 via-cyan-200 rounded-t-md shadow text-center">
+        <div className="p-4 font-bold text-xl bg-gradient-to-b from-cyan-500 via-cyan-200 rounded-t-md shadow text-center " >
           Top Cryptocurrency By Market Cap
         </div>
         <hr />
       </div>
 
-      <div className="crypto-list scroll h-[634px] overflow-y-scroll shadow-lg rounded-lg">
+      <div className="crypto-list scroll h-[620px] overflow-y-scroll shadow-lg  rounded-lg">
         {cryptoData && cryptoData.length > 0
           ? cryptoData.map((crypto) => (
               <div key={crypto.id} className="crypto-item flex gap-1">
@@ -57,7 +57,7 @@ const CryptoSidebar = () => {
                     </p>
                     <p>Mkt Cap: {formatCurrency(crypto.market_cap, selectedCurrency)}</p>
                   </div>
-                  <p class='pt-6 ml-2 '>
+                  <p class='pt-6 ml-4 '>
                     {crypto.priceChangeDirection === 'up' ? (
                       <span>
                         <img className="w-4 h-4" src={require('./images/up.png')} alt="up" />
