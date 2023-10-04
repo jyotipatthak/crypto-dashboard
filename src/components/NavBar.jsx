@@ -7,7 +7,7 @@ function NavBar() {
       {/* Logo and brand name */}
       <div className="pt-2  ml-8 font-serif text-2xl">
         {/* Logo element with brand name */}
-        <span className="bg-red-500 text-white">AL</span>ma<u>Better</u>
+        <p><span className="bg-red-500 text-white">AL</span>ma<u>Better</u></p>
         
       </div>
     </div>

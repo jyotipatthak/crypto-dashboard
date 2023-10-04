@@ -14,7 +14,7 @@ const CurrencyDropdown = () => {
   };
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row w-1/7">
       {/* Dropdown for selecting the currency */}
       <select
         value={selectedCurrency}

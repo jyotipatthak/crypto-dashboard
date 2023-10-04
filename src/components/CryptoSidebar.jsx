@@ -57,7 +57,7 @@ const CryptoSidebar = () => {
                     </p>
                     <p>Mkt Cap: {formatCurrency(crypto.market_cap, selectedCurrency)}</p>
                   </div>
-                  <p class='pt-6 ml-4 '>
+                  <p className='pt-6 ml-4 '>
                     {crypto.priceChangeDirection === 'up' ? (
                       <span>
                         <img className="w-4 h-4" src={require('./images/up.png')} alt="up" />

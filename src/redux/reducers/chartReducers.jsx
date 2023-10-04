@@ -10,8 +10,8 @@ import {
   
   // Define the initial state for the chart feature
   const initialState = {
-    timeInterval: '1d',        // Default time interval for chart data
-    currency: 'GALA',     // Default currency for chart data
+    timeInterval: '',        // Default time interval for chart data
+    currency: '',     // Default currency for chart data
     chartType: 'line',        // Default chart type
     chartData: [],            // Initial empty array to store chart data
     loading: false,           // Flag to indicate if data is currently being fetched

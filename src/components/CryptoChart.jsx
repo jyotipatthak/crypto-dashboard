@@ -19,7 +19,7 @@ import {
 const CryptoChart = () => {
   const dispatch = useDispatch();
   const [currency, setCurrency] = useState('bitcoin');
-  const [timeInterval, setTimeInterval] = useState('365d');
+  const [timeInterval, setTimeInterval] = useState('1d');
   const [chartType, setChartType] = useState('line');
   const timeIntervals = [
     { value: '1d', label: '1D' },
@@ -51,7 +51,7 @@ const CryptoChart = () => {
     switch (chartType) {
       case 'line':
         return (
-          <LineChart data={chartData} margin={{ left: 2 }}>
+          <LineChart data={chartData} margin={{ left: 8}}>
             <CartesianGrid strokeDasharray="2 2" />
             <XAxis dataKey="date" />
             <YAxis />
@@ -63,7 +63,7 @@ const CryptoChart = () => {
 
       case 'bar':
         return (
-          <BarChart data={chartData} margin={{ left: 2 }}>
+          <BarChart data={chartData} margin={{ left:8}}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" />
             <YAxis />
@@ -75,7 +75,7 @@ const CryptoChart = () => {
 
       case 'area':
         return (
-          <AreaChart data={chartData} margin={{ left: 2 }}>
+          <AreaChart data={chartData} margin={{ left: 8}}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" />
             <YAxis />
@@ -90,17 +90,18 @@ const CryptoChart = () => {
     }
   };
 
+  
   return (
     <>
       <div className="flex pl-30 bg-white shadow gap-4">
-        <div className="w-1/2 pt-4  text-right ">
+        <div className="w-1/2 pt-4  text-right pb-2">
           {/* Render time interval buttons */}
           {timeIntervals.map((interval) => (
             <button
               key={interval.value}
               onClick={() => setTimeInterval(interval.value)}
-              className={`bg-slate-200 ring-cyan-500 ring-1 px-3 py-1 h-8 mt-2 rounded-md mx-3 mr-2 pb-1.5 ${
-                timeInterval === interval.value ? ' bg-gray-500 text-red-500' : 'text-gray-700'
+              className={` ring-1 px-3 py-1 h-8 mt-2 rounded-md mx-3 mr-2 pb-1.5 ${
+                timeInterval === interval.value ? ' ring-black bg-cyan-500 text-black-500 hover:bg-red-400' : 'ring-cyan-500 bg-slate-300 text-red-500 hover:bg-red-400'
               }`}
             >
               {interval.label}
@@ -112,7 +113,7 @@ const CryptoChart = () => {
           <select
             value={currency}
             onChange={(e) => setCurrency(e.target.value)}
-            className='ring-1 ring-cyan-500 bg-gray-100 rounded focus:outline-none px-2 h-9 mt-2 font-semibold'
+            className='ring-1 ring-cyan-500 bg-slate-300 rounded focus:outline-none px-2 h-9 mt-2 font-semibold'
           >
             <option value='roasthimjim'>Jim</option>
             <option value='pepe-2-0'>Pepe 2.0</option>
@@ -125,7 +126,7 @@ const CryptoChart = () => {
 
           {/* Render chart type selection dropdown */}
           <select
-            className='ring-1 ring-cyan-500 bg-gray-100 rounded focus:outline-none px-2 py-2 h-9 mt-2 font-semibold'
+            className='ring-1 ring-cyan-500 bg-slate-300 rounded focus:outline-none px-2 py-2 h-9 mt-2 font-semibold'
             fdprocessedid='wzsui'
             value={chartType}
             onChange={(e) => setChartType(e.target.value)}

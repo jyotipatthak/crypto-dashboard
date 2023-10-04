@@ -23,7 +23,7 @@ function Main() {
       </header>
 
       {/* Main content */}
-      <div className="bg-slate-100 flex flex-col mb-4 m-4 md:m-6 h-full rounded md:flex-row overflow-hidden">
+      <div className="bg-slate-100 flex flex-col mb-4  md:m-4 h-full rounded md:flex-row overflow-hidden">
         <div className='grid grid-rows md:h-full lg:col-span-3  '>
           <div className="flex flex-row">
             {/* CurrencyDropdown component */}
@@ -47,7 +47,7 @@ function Main() {
             </div>
           </div>
         </div>
-        <div className="bg-white shadow-md mt-4 mb-4 mx-4 md:ml-0">
+        <div className="bg-white shadow-md mt-4 mb-4 mx-4 md:ml-0 md:w-1/4">
           {/* CryptoSidebar component */}
           <CryptoSidebar selectedCurrency={selectedCurrency} />
         </div>

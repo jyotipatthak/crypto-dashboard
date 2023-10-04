@@ -35,7 +35,7 @@ export const fetchCryptoData = (currency) => {
         params: {
           vs_currency: currency,   // Specify the currency to use in the API call
           order: 'market_cap_desc', // Order the results by market capitalization in descending order
-          per_page: 100,            // Limit the number of results per page to 10
+          per_page: 20,            // Limit the number of results per page to 10
           page: 1,                 // Fetch the first page of results
         },
       })

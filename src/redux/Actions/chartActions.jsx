@@ -54,7 +54,7 @@ export const fetchChartData = (currency, timeInterval) => {
     axios
       .get(`https://api.coingecko.com/api/v3/coins/${currency}/market_chart`, {
         params: {
-          vs_currency: 'usd', // Change to the appropriate currency if needed
+          vs_currency: 'inr', // Change to the appropriate currency if needed
           days: timeInterval, // Adjust the API parameter according to your time interval selection
         },
       })

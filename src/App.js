@@ -1,7 +1,7 @@
 import './App.css';  // Import CSS file for styling
 import React from 'react';  // Import React library
-import Main from './components/Main';  // Import the Main component
-import NavBar from './components/NavBar';  // Import the NavBar component
+import Main from './components/Main.jsx';  // Import the Main component
+import NavBar from './components/NavBar.jsx';  // Import the NavBar component
 
 // Functional component representing the main application
 function App() {

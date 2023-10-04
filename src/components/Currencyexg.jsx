@@ -73,7 +73,7 @@ const CryptoExchange = () => {
       </select>
 
       {/* Input for Amount */}
-      <label htmlFor="amount" className='relative left-52 bottom-24 italic hover:not-italic'>Enter value:</label> <br />
+      <label htmlFor="amount"  className='relative left-52 bottom-24 italic hover:not-italic'>Enter value:</label> <br />
       <input
         type="number"
         id="amount"
@@ -84,7 +84,7 @@ const CryptoExchange = () => {
       />
 
       {/* Button to Compare */}
-      <button id="compare" className='relative top-4 mt-4 right-10 left-9 shadow-md rounded-md border-solid bg-cyan-500 border-radius h-8 w-28' onClick={handleCompare}>
+      <button id="compare" className='relative top-6 mt-4 right-10 left-9 shadow-md rounded-md border-solid bg-cyan-500 border-radius h-8 w-28' onClick={handleCompare}>
         Exchange
       </button>
 
