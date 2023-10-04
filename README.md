@@ -1,17 +1,17 @@
 In the project directory, you can run:
 
-npm start
+npm start:
 Runs the app in the development mode.
 Open http://localhost:3000 to view it in your browser.
 
 The page will reload when you make changes.
 You may also see any line errors in the console.
 
-npm test
+npm test :
 Launches the test runner in the interactive watch mode.
 See the section about running tests for more information.
 
-npm run build
+npm run build :
 Builds the app for production to the build folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
@@ -20,7 +20,7 @@ Your app is ready to be deployed!
 
 See the section about deployment for more information.
 
-npm run eject
+npm run eject :
 Note: this is a one-way operation. Once you eject, you can't go back!
 
 If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.
@@ -66,7 +66,7 @@ To get started with the Cryptocurrency Market Analysis tool, follow these steps:
 1. Clone the repository to your local machine:
 
 
-   git clone https://github.com/saptarshree/crypto-dashboard
+   git clone https://github.com/jyotipatthak/crypto-project
 
 
 
@@ -139,7 +139,7 @@ Dropdown Selection: Users can select one of the available fiat currencies.
 Redux Integration: Automatically updates the selected currency in the Redux store.
 
 
-                                    4.component name : Main Component
+                                   4.component name : Main Component
 The Main component serves as the main layout for your crypto dashboard application. It integrates various sub-components to provide users with a comprehensive view of cryptocurrency data.
 
 Features
@@ -162,7 +162,7 @@ Customize the component's appearance and behavior according to your application'
 
 
 
-                            5. Component Name: Navbar component
+                                  5. Component Name: Navbar component
 Features:
 Logo: Displays a logo image on the left side of the navigation bar. The logo is centered vertically.
 Styling:
@@ -175,7 +175,7 @@ Customize the styling and appearance of the navigation bar and logo as needed fo
 
 
 
-                              6.Component Name: PieChart component
+                                   6.Component Name: PieChart component
 Features:
 Chart Library: Utilizes Chart.js and the react-chartjs-2 library for creating and rendering the pie chart.
 Data Labels: Includes data labels with custom formatting using the chartjs-plugin-datalabels plugin.
@@ -200,7 +200,7 @@ Data labels are shown with custom formatting, including bold titles and white te
 
 
 
-                               7. Component Name: Searchbar component
+                                    7. Component Name: Searchbar component
 
 Description:
 The Searchbar component is a user interface element used for inputting and searching cryptocurrency data using the CoinGecko API. It provides real-time search functionality and displays search results based on user input.
@@ -228,8 +228,8 @@ It queries the API for cryptocurrency data based on the user's search query and 
 This Searchbar component enhances the user experience by providing a user-friendly interface for searching cryptocurrency data, displaying real-time results, and handling potential API errors.
 
             
-            
-                                 8.Component Name: CryptoSidebar component
+               
+                                      8.Component Name: CryptoSidebar component
 
 Description:
 The CryptoSidebar component is a user interface element designed to display information about the top cryptocurrencies by market capitalization. It integrates with Redux to fetch cryptocurrency data, format it, and present it in a visually appealing way. Additionally, it calculates whether each cryptocurrency is in profit or loss based on current and previous prices and provides corresponding icons.
@@ -250,7 +250,7 @@ Cryptocurrency List: Renders a list of cryptocurrencies with their logos, names,
 
 Profit/Loss Indication: Adds a green "▲" icon for profit and a red "▼" icon for loss next to each cryptocurrency, along with a textual indicator.
 
-                                         9. Styling:
+                                                      9. Styling:
 
 Employs Tailwind CSS classes to style the component, providing a responsive and visually appealing design.
 Summary:
